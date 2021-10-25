@@ -19,10 +19,8 @@ app.get('/task',async (req,res)=>{
             console.log("This is the error", err);
         }
         else {
-
-            // console.log(response);
             res.json(response);
-            console.log("Hi the line break");
+            
         }
     });
     
@@ -30,13 +28,11 @@ app.get('/task',async (req,res)=>{
 
 app.post('/add', (req,res)=>{
     let task=req.body;
-
-    console.log(task)
     if(task.item.length>=3){
         const add=`INSERT INTO todos(item) VALUES('${task.item}');`
         connection.query(add,(e,r,f)=>{
             if(e){
-                console.log("this is the error",e)
+                console.log("this is the error", e)
             }
             else{
                 res.json(task)
@@ -56,12 +52,8 @@ app.post('/delete', async (req,res)=>{
         if (err) {
             console.log("errr in del", err);
         }
-
-
     });
     res.json(data)
-    console.log(data)
-    
 });
 
 
